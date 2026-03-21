@@ -1,7 +1,7 @@
 import { Title } from "@solidjs/meta";
 import { For, createSignal, createEffect, Show, onMount } from "solid-js";
 import { useSearchParams } from "@solidjs/router";
-import  s  from "./welcome0.module.css";
+import  s  from "./welcome.module.css";
 type ContentBlock = {
   content_name: string;
   content: string;

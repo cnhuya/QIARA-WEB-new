@@ -1,7 +1,7 @@
 import { Title } from "@solidjs/meta";
 import { useNavigate } from "@solidjs/router";
 import { onMount, createSignal, For } from "solid-js";
-import s from "./welcome0.module.css";
+import s from "./welcome.module.css";
 import ExchangeChart from "~/components/welcome/Chart";
 import Ecosystem from "~/components/welcome/Ecosystem";
 import Backers from "~/components/welcome/Backers";

@@ -1,5 +1,5 @@
 import { For } from "solid-js";
-import s from "../../routes/welcome0.module.css";
+import s from "../../routes/welcome.module.css";
 const series = [
   { name: "Stable",   color: "#4ade80", key: "stable"   },
   { name: "Bitcoin",  color: "#f59e0b", key: "bitcoin"  },
