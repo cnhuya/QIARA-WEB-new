@@ -1,0 +1,23 @@
+dist
+.wrangler
+.output
+.vercel
+.netlify
+.vinxi
+app.config.timestamp_*.js
+
+# Environment
+.env
+.env*.local
+
+# dependencies
+/node_modules
+
+/src/data
+
+# Temp
+gitignore
+
+# System Files
+.DS_Store
+Thumbs.db

@@ -1,0 +1,45 @@
+
+
+.iron{
+	filter: invert(0%) sepia(100%) saturate(100%) hue-rotate(190deg) brightness(65%);
+	opacity: 0.26;
+}
+.bronze{
+	filter: invert(10%) sepia(100%) saturate(100%) hue-rotate(-30deg) brightness(70%);
+	opacity: 0.38;
+}
+.silver{
+	filter: invert(0%) sepia(100%) saturate(100%) hue-rotate(200deg) brightness(75%);
+	opacity: 0.40;
+}
+.gold{
+	filter: invert(0%) sepia(100%) saturate(200%) hue-rotate(0deg) brightness(80%);
+	opacity: 0.52;
+}
+.platinum{
+	filter: invert(0%) sepia(100%) saturate(200%) hue-rotate(150deg) brightness(85%);
+	opacity: 0.64;
+}
+.emerald{
+	filter: invert(0%) sepia(100%) saturate(300%) hue-rotate(50deg) brightness(90%);
+	opacity: 0.76;
+}
+.diamond{
+	filter: invert(20%) sepia(100%) saturate(1000%) hue-rotate(150deg) brightness(95%);
+	opacity: 0.88;
+}
+.obsidian{
+	filter: invert(0%) sepia(100%) contrast(70%) saturate(2000%) hue-rotate(270deg) brightness(100%);
+	opacity: 1;
+}
+
+.vip1{
+	filter: invert(0%) sepia(100%) contrast(100%) saturate(150%) hue-rotate(320deg) brightness(80%);
+}
+.vip2{
+	filter: invert(0%) sepia(100%) contrast(105%) saturate(300%) hue-rotate(320deg) brightness(90%);
+}
+.vip3{
+	filter: invert(0%) sepia(100%) contrast(110%) saturate(450%) hue-rotate(320deg) brightness(100%);
+}
+

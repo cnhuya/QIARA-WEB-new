@@ -1,0 +1,31 @@
+{
+  "name": "example-basic",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "start": "vite start",
+    "preview": "vite preview",
+    "db": "bun src/db/server.ts",
+    "dev:all": "concurrently -k --delay 2000 \"bun run db\" \"bun run dev\""
+  },
+  "dependencies": {
+    "@solidjs/meta": "^0.29.4",
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "2.0.0-alpha.2",
+    "@solidjs/vite-plugin-nitro-2": "^0.1.0",
+    "apexcharts": "^5.10.4",
+    "ethers": "^6.16.0",
+    "lightweight-charts": "^5.1.0",
+    "solid-js": "^1.9.5",
+    "supra-l1-sdk": "^5.0.2",
+    "vite": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.10",
+    "concurrently": "^9.2.1"
+  }
+}
