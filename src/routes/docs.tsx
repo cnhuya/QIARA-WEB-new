@@ -32,7 +32,7 @@ const backers: Group[] = [
     { name: "Introduction", icon_path: "/menu/welcome.svg", slug: "introduction",
       content: [
         { content_name: "Welcome!", content: "<p>Welcome to Qiara Protocol, a next-generation platform redefining Web 3.0 for everyone. Our goal is to modernize, simplify, and unify the Web 3.0 space. We do this by introducing Crosschain Messaging, which opens up new possibilities for the Web 3.0 ecosystem. For example, users can lend and borrow assets across multiple chains, swap tokens seamlessly, or even deploy a new memecoin on multiple chains at once in the future. Here is the full list of possibilities this technology will bring in the near future.</p>" },
-        { content_name: "", content: `<div class=${s.list} style="transform: translateY(-1rem)">
+        { content_name: "", content: `<div class=${s.list} >
               <div class="">
                 <div class="row">
                   <div class="dot"></div>
@@ -78,7 +78,7 @@ const backers: Group[] = [
                 <p>Tokens can exist and move across many blockchains at once. This improves flexibility for developers and gives users the freedom to use assets wherever they are needed.</p>
               </div>
             </div>` },
-        { content_name: "", content: `<p style="transform: translateY(-3rem)">That’s not all, we are thinking big and we mean it. We are also planning to release multiple useful tools for developers, such as on-chain randomness, pre-written modules for games, public storage, and encrypted storage designed for enterprise use. Our goal is to create a platform that unifies not just liquidity, but the entire Web 3.0 space.  
+        { content_name: "", content: `<p>That’s not all, we are thinking big and we mean it. We are also planning to release multiple useful tools for developers, such as on-chain randomness, pre-written modules for games, public storage, and encrypted storage designed for enterprise use. Our goal is to create a platform that unifies not just liquidity, but the entire Web 3.0 space.  
   
               We aim to innovate, build, and support the community. That’s why we are introducing a new trading model: Non-Liquidative Perpetual Trading. We are tired of manipulations by big players in the Web 3.0 industry, which hurt many users and damage the ecosystem more than most people realize. Nowadays, the first impression many have of cryptocurrency is “scam.” We want to change that and help not only everyday users succeed but also attract more people to be interested in the Web 3.0 space itself.  
               
@@ -104,7 +104,7 @@ const backers: Group[] = [
       content: [
         { content_name: "Who are we?", content: "<p>We are just three guys. Two of us are fresh graduates who finished our studies this year (2025), and the third is our manager, who helps us with social media, potential partnerships, and overall coordination. While we may not have a lot of experience yet, we are here to create something amazing. We hope you’ll give us a chance, because we are thinking big.</p>" },
         { content_name: "Goals", content: "<p>Our goals are quite simple, we are building innovative technology to help people lose less and earn more, in not only fun ways but also new ways.</p>" },
-        { content_name: "", content: `<div class=${s.list}  style="transform: translateY(-3rem)">
+        { content_name: "", content: `<div class=${s.list}  style="transform: translateY(-1rem)">
     <div class="">
       <div class="row">
         <div class="dot"></div>

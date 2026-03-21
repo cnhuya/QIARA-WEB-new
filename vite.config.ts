@@ -1,11 +1,11 @@
-import { defineConfig } from "vite";
-import { nitroV2Plugin as nitro } from "@solidjs/vite-plugin-nitro-2";
 import { solidStart } from "@solidjs/start/config";
+import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [
-    solidStart(),
-    nitro(),
+    solidStart({
+      ssr: true,
+    }),
   ],
   optimizeDeps: {
     exclude: ["bun:sqlite"],
@@ -15,5 +15,4 @@ export default defineConfig({
       external: ["bun:sqlite"],
     },
   },
-  // ✅ removed ssr block — was likely causing the blank page
 });
