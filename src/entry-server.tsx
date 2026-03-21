@@ -1,5 +1,8 @@
 // @refresh reload
 import { createHandler, StartServer } from "@solidjs/start/server";
+import { startCronjob } from "./db/cronjob";
+
+startCronjob();
 
 export default createHandler(() => (
   <StartServer

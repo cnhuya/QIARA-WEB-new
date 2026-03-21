@@ -7,6 +7,7 @@ import { useDataSource } from "~/hooks/useStream";
 import { query } from "@solidjs/router";
 import type { EventRow } from "~/db/client";
 import { capitalize, truncate } from "~/lib/util";
+import { getBlockchains, getCategories, getEventTypes } from "../db/client";
 
 const CHAIN_ICON: Record<string, { iconPath: string; iconType: string }> = {
   supra:    { iconPath: "chains", iconType: "webp" },
@@ -29,9 +30,9 @@ type BuiltDropdowns = { blockchains: DropdownItem[]; categories: DropdownItem[];
 const getDropdowns = query(async (): Promise<BuiltDropdowns> => {
   "use server";
   const [blockchains, categories, eventTypes] = await Promise.all([
-    fetch("http://localhost:3001/blockchains").then(r => r.json()) as Promise<string[]>,
-    fetch("http://localhost:3001/categories").then(r => r.json()) as Promise<string[]>,
-    fetch("http://localhost:3001/event-types").then(r => r.json()) as Promise<string[]>,
+    getBlockchains(),
+    getCategories(),
+    getEventTypes(),
   ]);
 
   return {
