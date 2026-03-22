@@ -6,7 +6,7 @@ import { activeShared, getAllConnections, Chain } from "~/lib/state";
 import { notify } from "~/lib/notify";
 export type ActiveTab = "deposit" | "withdraw" | "stake" | "unstake";
 import type {SendTxArgs} from "~/lib/wallet";
-
+import { bcsSerializeString, bcsSerializeU64, bcsSerializeU256 } from "~/lib/serializer";
 type ActionMenuProps = {
   token:       string;
   chain:       string;
@@ -42,7 +42,7 @@ export function ActionMenu(props: ActionMenuProps) {
       moduleAddress: "0x414d4a03ce2efeb08044ab890862f2ade3d6d24700e2ae1c8dfe0684a23b97b6",
       moduleName: "QiaraVaultsV1",
       functionName: activeTab(),
-      args: [props.chain, activeShared(), props.token, props.provider, amount()],
+      args: [bcsSerializeString(activeShared()), bcsSerializeString(props.token), bcsSerializeString(props.chain), bcsSerializeString(props.provider), bcsSerializeU64(BigInt(Math.floor(parseFloat(amount()) * 1e9)))],
     };
 
     sendTx(connectedChain as any, wallet as any, args);
@@ -55,7 +55,7 @@ export function ActionMenu(props: ActionMenuProps) {
         width="25rem"
         height="20rem"
         contentFn={() => (
-          <div class="column" style={{ width: "100%", gap: "0" }}>
+          <div class="column" style={"width: 100%; gap: 0"}>
             {/* Tabs */}
             <div class="row width" style="padding: var(--pad25); gap: var(--gap25); justify-content: flex-start; border-bottom: var(--border);">
          <Button

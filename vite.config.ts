@@ -1,18 +1,24 @@
-import { solidStart } from "@solidjs/start/config";
-import { defineConfig } from "vite";
+import { defineConfig } from "@solidjs/start/config";
 
 export default defineConfig({
-  plugins: [
-    solidStart({
-      ssr: true,
-    }),
-  ],
-  optimizeDeps: {
-    exclude: ["bun:sqlite"],
+  ssr: false,
+  server: {
+    preset: "bun",
+    esbuild: {
+      options: {
+        target: "esnext",
+      },
+    },
   },
-  build: {
-    rollupOptions: {
-      external: ["bun:sqlite"],
+  vite: {
+    optimizeDeps: {
+      exclude: ["bun:sqlite"],
+    },
+    build: {
+      rollupOptions: {
+        external: ["bun:sqlite"],
+      },
+      target: "esnext",
     },
   },
 });

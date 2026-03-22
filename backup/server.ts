@@ -1,5 +1,5 @@
-import { startCronjob } from "./cronjob";
-import { getCategories, getBlockchains, getEventTypes, getAllEvents, getSharedEvents } from "./client";
+import { startCronjob } from "../src/db/cronjob";
+import { getCategories, getBlockchains, getEventTypes, getAllEvents, getSharedEvents } from "../src/db/client";
 
 startCronjob();
 

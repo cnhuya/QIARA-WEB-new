@@ -1,7 +1,7 @@
 import { join } from "path";
 
-const { default: handler } = await import("./dist/server/entry-server.js");
-const staticDir = join(import.meta.dir, "dist/client");
+const { default: handler } = await import("./.output/server/index.mjs");
+const staticDir = join(import.meta.dir, ".output/public");
 
 Bun.serve({
   port: process.env.PORT ?? 3001,
