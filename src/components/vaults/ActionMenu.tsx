@@ -40,7 +40,7 @@ export function ActionMenu(props: ActionMenuProps) {
     const args: SendTxArgs = {
       account,
       moduleAddress: "0x414d4a03ce2efeb08044ab890862f2ade3d6d24700e2ae1c8dfe0684a23b97b6",
-      moduleName: "QiaraVaultsV1",
+      moduleName: "QiaraVaultsV3",
       functionName: activeTab(),
       args: [bcsSerializeString(activeShared()), bcsSerializeString(props.token), bcsSerializeString(props.chain), bcsSerializeString(props.provider), bcsSerializeU64(BigInt(Math.floor(parseFloat(amount()) * 1e9)))],
     };

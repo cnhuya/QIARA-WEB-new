@@ -5,6 +5,7 @@ import { clientOnly } from "@solidjs/start";
 import { createSignal, Show, Component } from "solid-js";
 import type { ChainVaultEntry } from "~/components/vaults/Vaults";
 import { sendTx } from "~/lib/wallet";
+import { A } from "@solidjs/router";
 const TripleDropdown = clientOnly(() => import("~/components/TripleDropdown").then(m => ({ default: m.TripleDropdown })));
 const Vaults = clientOnly(() => import("~/components/vaults/Vaults").then(m => ({
   default: m.Vaults as unknown as Component<{
@@ -37,6 +38,10 @@ export default function Vault() {
         name="Vaults"
         description="Lend, Borrow or Stake your assets, freely across wide range of Blockchains and Protocols, all in one place."
         header="Vaults"
+        links={<div class="row right" style="">
+          <A class="hover row" href="/docs?page=vaults">Documentation <img class="link" src="https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/menu/link.svg" /></A>
+          <A class="hover row" href="https://github.com/cnhuya/QIARA-CODE/tree/main/Supra/Market">Source Code <img class="link" src="https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/menu/link.svg" /></A>
+        </div>}
         content={
           <div class="panel">
 

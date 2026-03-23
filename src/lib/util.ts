@@ -1,5 +1,5 @@
 export const getCSSVar = (name: string): string => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-export const formatNumber = (raw: string, denom: string, decimals = 4) => {
+export const formatNumber = (raw: string, denom: string, decimals = 2) => {
   const denominator = BigInt(denom);
   const price = BigInt(raw);
   return (Number(price * 10000n / denominator) / 10000).toFixed(decimals);

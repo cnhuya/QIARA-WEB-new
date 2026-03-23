@@ -6,8 +6,9 @@ import { Bg } from "../Bg";
 import { Button } from "../Button";
 import { ActionMenu } from "./ActionMenu";
 import type { ActiveTab } from "./ActionMenu";
+import { D } from "../../../dist/client/_build/assets/index-yPgyhMff";
 const DENOM = 1e18;
-
+const DENOM1 = BigInt(1e9); // or 1_000_000_000_000_000_000n
 type VaultData = {
   incentive: { end: string; per_second: string; start: string };
   last_update: string;
@@ -121,7 +122,7 @@ export function Vaults(props: LinkProps) {
         return {
           token,
           hasData,
-          deposited:   formatNumber(String(totalDeposited), DENOM.toString()),
+          deposited:   formatNumber(String(totalDeposited / DENOM1), DENOM.toString()),
           borrowed:    formatNumber(String(totalBorrowed),  DENOM.toString()),
           staked:      formatNumber(String(totalStaked),    DENOM.toString()),
           rewards:     formatNumber(String(totalRewards),   DENOM.toString()),
@@ -212,10 +213,10 @@ onClick={() => {
             </div>
 
             {/* Liquidity */}
-            <p style="text-align: start; width: 7rem;">{row.hasData ? `${row.deposited}$` : "0.00$"}</p>
+            <p style="text-align: start; width: 7rem;">{row.hasData ? `${row.deposited}$` : formatNumber("0", DENOM.toString())+"$"}</p>
 
             {/* Borrows */}
-            <p style="text-align: start;  width: 7rem;">{row.hasData ? `${row.borrowed}$` : "0.00$"}</p>
+            <p style="text-align: start;  width: 7rem;">{row.hasData ? `${row.borrowed}$` : formatNumber("0", DENOM.toString())+"$"}</p>
 
             {/* Utilization */}
             <div style="min-width: 7rem;">
@@ -283,8 +284,8 @@ type OpenAction = { token: string; chain: string; provider: string; initialTab: 
 
       return {
         name:        chain.key,
-        liquidity:   formatNumber(String(totalDeposited), DENOM.toString()),
-        borrows:     formatNumber(String(totalBorrowed),  DENOM.toString()),
+        liquidity:   formatNumber(String(totalDeposited / DENOM1), DENOM.toString()),
+        borrows:     formatNumber(String(totalBorrowed / DENOM1),  DENOM.toString()),
         utilization: `${utilization}%`,
         depositAPR:  "0.00%",
         borrowAPR:   "0.00%",
@@ -294,8 +295,8 @@ type OpenAction = { token: string; chain: string; provider: string; initialTab: 
           const util = dep > 0n ? Math.round(Number(bor * 100n / dep)) : 0;
           return {
             name:        p.key,
-            liquidity:   formatNumber(String(dep), DENOM.toString()),
-            borrows:     formatNumber(String(bor), DENOM.toString()),
+            liquidity:   formatNumber(String(dep / DENOM1), DENOM.toString()),
+            borrows:     formatNumber(String(bor / DENOM1), DENOM.toString()),
             utilization: `${util}%`,
             depositAPR:  "0.00%",
             borrowAPR:   "0.00%",
@@ -314,7 +315,7 @@ const isActiveAction = (chain: string, provider: string, tab: ActiveTab) =>
     <div class="column width" style="gap: 0;">
 
       {/* Vault Header */}
-      <div class="row width border" style="justify-content: flex-start; padding: var(--pad25); gap: var(--gap50);">
+      <div class="row width border" style="height: 3rem; justify-content: flex-start; padding: var(--pad25); gap: var(--gap50);">
         <img
           style="width: 1.5rem; height: 1.5rem; border-radius: 50%;"
           src={`https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/tokens/${props.token.toLowerCase()}.webp`}
@@ -322,8 +323,37 @@ const isActiveAction = (chain: string, provider: string, tab: ActiveTab) =>
         />
         <h4>{props.token}</h4>
         <Show when={props.price}>
-          <p style="opacity: 0.5;">${props.price}</p>
+        <div style="margin-left: 2rem;">
+          <h5 style="width: 6rem; opacity: 0.75; text-align: left;">Price</h5>
+          <h5 style="width: 6rem; text-align: left;">${props.price}</h5>
+        </div>
         </Show>
+
+        <div style="margin-left: 2rem;">
+          <h5 style="width: 6rem; opacity: 0.75; text-align: left;">Oracle ID</h5>
+          <h5 style="width: 6rem; text-align: left;">49</h5>
+        </div>
+
+        <div>
+          <h5 style="width: 6rem; opacity: 0.75; text-align: left;">Tier</h5>
+          <h5 style="width: 6rem; text-align: left;">Emerald</h5>
+        </div>
+    
+        <div>
+          <h5 style="width: 6rem; opacity: 0.75; text-align: left;">Credits</h5>
+          <h5 style="width: 6rem; text-align: left;">21 014 983</h5>
+        </div>
+
+        <div>
+          <h5 style="width: 7rem; opacity: 0.75; text-align: left;">Circ / Total Supply</h5>
+          <h5 style="width: 7rem; text-align: left;">314,97k / 314,94k</h5>
+        </div>
+
+          <div>
+          <h5 style="width: 6rem; opacity: 0.75; text-align: left;">Market Cap</h5>
+          <h5 style="width: 6rem; text-align: left;">$10,74M</h5>
+        </div>
+
       </div>
 
 {/* Column Headers */}
@@ -369,7 +399,7 @@ const isActiveAction = (chain: string, provider: string, tab: ActiveTab) =>
                 </div>
               </div>
               <Show when={isOpen()}>
-              <div class="width column border" style="padding: var(--pad25);">
+              <div class="width column border" style="padding: var(--pad50);">
                 <For each={chain.providers}>
                   {(provider) => (
                     <div
