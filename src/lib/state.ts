@@ -1,7 +1,7 @@
 import { createSignal } from "solid-js";
 
-export type Chain = "supra" | "sui" | "base" | "ethereum" | "monad";
-export type WalletKey = "starkey" | "metamask" | "phantom" | "slush";
+export type Chain = "aptos" | "sui" | "base" | "ethereum" | "monad";
+export type WalletKey = "petra" | "metamask" | "phantom" | "slush";
 
 export type ConnectedWallet = {
   chain: Chain;
@@ -27,7 +27,7 @@ export const clearConnection = (chain: Chain) => {
 
 // Load from sessionStorage on init
 const loadConnections = () => {
-  const chains: Chain[] = ["supra", "sui", "base", "ethereum", "monad"];
+  const chains: Chain[] = ["aptos", "sui", "base", "ethereum", "monad"];
   const loaded: Partial<Record<Chain, { wallet: WalletKey; account: string }>> = {};
   for (const chain of chains) {
     try {

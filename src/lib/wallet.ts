@@ -1,6 +1,6 @@
 import { connectWithMetaMask } from "./wallets/metamask";
 import { connectWithPhantomSui } from "./wallets/phantom";
-import { connectWithStarKey, send_tx as starkeySendTx } from "./wallets/starkey";
+import { connectWithPetra, send_tx } from "./wallets/petra";
 import { notify } from "./notify";
 type WalletConnectCallback = (account: string, chain: string, provider: unknown) => void;
 
@@ -16,13 +16,13 @@ type ChainWallets = Record<string, WalletDefinition>;
 type WalletDefinitions = Record<string, ChainWallets>;
 
 export const walletDefinitions: WalletDefinitions = {
-  supra: {
-    starkey: {
-      name: "Starkey",
-      icon: "https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/menu/starkey.webp",
-      website: "https://starkey.app",
+  aptos: {
+    petra: {
+      name: "Petra",
+      icon: "https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/menu/petra.webp",
+      website: "https://petra.app",
       chrome: "https://chromewebstore.google.com/detail/starkey-wallet-the-offici/hcjhpkgbmechpabifbggldplacolbkoh",
-      connect: (chain, onConnect) => connectWithStarKey(chain, onConnect as Parameters<typeof connectWithStarKey>[1]),
+      connect: (chain, onConnect) => connectWithPetra(chain, onConnect as Parameters<typeof connectWithPetra>[1]),
     },
   },
   base: {
@@ -101,8 +101,8 @@ export async function connectWallet(
 export const shortenString = (str: string, start = 4, end = 4): string =>
   str.length <= start + end ? str : `${str.slice(0, start)}...${str.slice(-end)}`;
 
-type Chain = "supra" | "base";
-type Provider = "starkey" | "metamask";
+type Chain = "aptos" | "base";
+type Provider = "petra" | "metamask";
 
 export type SendTxArgs = {
   account: string;
@@ -120,8 +120,8 @@ export async function sendTx(
 ): Promise<string | null> {
   let result: string | null = null;
 
-  if (chain === "supra" && provider === "starkey") {
-    result = await starkeySendTx(txArgs);
+  if (chain === "aptos" && provider === "petra") {
+    //result = await starkeySendTx(txArgs);
   } else if (chain === "base" && provider === "metamask") {
     // const { send_tx } = await import("~/wallets/metamask");
     // result = await send_tx(txArgs);

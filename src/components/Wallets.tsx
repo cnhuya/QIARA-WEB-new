@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { JSX, createSignal, For, Show } from "solid-js";
 import { connectWithMetaMask } from "../lib/wallets/metamask";
 import { connectWithPhantomSui } from "../lib/wallets/phantom";
-import { connectWithStarKey } from "../lib/wallets/starkey";
+import { connectWithPetra } from "../lib/wallets/petra";
 import { Dropdown } from "./Dropdown";
 import { WalletKey } from "~/lib/state";
 type WalletConnectCallback = (account: string, chain: string, provider: unknown) => void;
@@ -20,13 +20,13 @@ type ChainWallets = Record<string, WalletDefinition>;
 type WalletDefinitions = Record<string, ChainWallets>;
 
 export const walletDefinitions: WalletDefinitions = {
-  supra: {
-    starkey: {
-      name: "Starkey",
-      icon: "https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/menu/starkey.webp",
-      website: "https://starkey.app",
-      chrome: "https://chromewebstore.google.com/detail/starkey-wallet-the-offici/hcjhpkgbmechpabifbggldplacolbkoh",
-      connect: (chain, onConnect) => connectWithStarKey(chain, onConnect as Parameters<typeof connectWithStarKey>[1]),
+  aptos: {
+    petra: {
+      name: "Petra",
+      icon: "https://raw.githubusercontent.com/cnhuya/AEXIS-CDN/main/menu/petra.webp",
+      website: "https://petra.app",
+      chrome: "https://chromewebstore.google.com/detail/petra-aptos-wallet/ejjladinnckdgjemekebdpeokbikhfci?hl=encategory=extensions",
+      connect: (chain, onConnect) => connectWithPetra(chain, onConnect as Parameters<typeof connectWithPetra>[1]),
     },
   },
   base: {

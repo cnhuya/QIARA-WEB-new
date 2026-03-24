@@ -49,14 +49,17 @@ export function Settings(props: SettingsProps) {
   const [settings, setSettings] = createSignal<SettingsData>(loadSettings());
   const [checked, setChecked] = createSignal(false);
   
-  onMount(() => {
-    const saved = loadSettings();
-    document.documentElement.setAttribute("data-theme", saved.overall.theme);
-  });
+onMount(() => {
+  const saved = loadSettings();
+  // Force initial signal value in case of any race
+  setSettings(saved);
+  document.documentElement.setAttribute("data-theme", saved.overall.theme);
+});
 
-  createEffect(() => {
-    document.documentElement.setAttribute("data-theme", settings().overall.theme);
-  });
+// Optional: still keep effect for live updates while modal is open
+createEffect(() => {
+  document.documentElement.setAttribute("data-theme", settings().overall.theme);
+});
 
   const updateOverall = <K extends keyof SettingsData["overall"]>(
     key: K,

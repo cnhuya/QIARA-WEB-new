@@ -20,6 +20,25 @@ export default createHandler(() => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
             {assets}
+
+            {/* Inline theme script – runs before first paint, no flash */}
+            <script
+              // If you later add CSP, add nonce={nonce} prop here
+            >
+              {`
+                try {
+                  const raw = localStorage.getItem("settings");
+                  let theme = "dark";  // ← change if your default is different
+                  if (raw) {
+                    const parsed = JSON.parse(raw);
+                    if (parsed?.overall?.theme === "light" || parsed?.overall?.theme === "dark") {
+                      theme = parsed.overall.theme;
+                    }
+                  }
+                  document.documentElement.setAttribute("data-theme", theme);
+                } catch (e) {}
+              `}
+            </script>
           </head>
           <body>
             <div id="app">{children}</div>

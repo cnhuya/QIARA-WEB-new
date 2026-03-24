@@ -21,7 +21,7 @@ export function Header() {
   const [walletChain, setWalletChain] = createSignal<Chain | null>(null);
 
   // Derive account from global state for the active chain being viewed
-  const supraAccount = () => getConnection("supra")?.account ?? null;
+  const aptosAccount = () => getConnection("aptos")?.account ?? null;
 
   const handleConnected = (account: string, chain: Chain, wallet: WalletKey) => {
     setConnection(chain, wallet, account);
@@ -32,7 +32,7 @@ export function Header() {
     // Show first connected account for header display
     const chain = walletChain();
     if (chain) return getConnection(chain)?.account ?? null;
-    return supraAccount(); // fallback to supra as primary
+    return aptosAccount(); // fallback to supra as primary
   };
 
   return (
@@ -77,7 +77,7 @@ export function Header() {
 
       <span class="right" />
 
-      <Show when={supraAccount()}>
+      <Show when={aptosAccount()}>
         {account => (
           <SharedClient
             account={account()}
@@ -99,7 +99,7 @@ export function Header() {
             : undefined,
         }}
         buttons={[
-          { folder: "chains", name: "supra",    icon_type: "webp", label: "Supra",    onClick: () => setWalletChain("supra")    },
+          { folder: "chains", name: "aptos",    icon_type: "webp", label: "Aptos",    onClick: () => setWalletChain("aptos")    },
           { folder: "chains", name: "sui",      icon_type: "webp", label: "Sui",      onClick: () => setWalletChain("sui")      },
           { folder: "chains", name: "base",     icon_type: "webp", label: "Base",     onClick: () => setWalletChain("base")     },
           { folder: "chains", name: "ethereum", icon_type: "webp", label: "Ethereum", onClick: () => setWalletChain("ethereum") },
